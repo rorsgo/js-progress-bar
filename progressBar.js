@@ -12,10 +12,14 @@ bar.style.transition = "0.2s";
 
 document.body.append(bar);
 
-document.addEventListener("scroll", () => {
+function updateBar() {
   const contentHeight = contentBox.offsetHeight;
   const axisY = window.pageYOffset;
 
   const updatedBar = axisY * 150 / contentHeight;
   bar.style.width = updatedBar + "%";
-});
+}
+
+window.addEventListener("load", () => {
+  document.addEventListener("scroll", updateBar);
+})
